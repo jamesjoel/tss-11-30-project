@@ -1,0 +1,46 @@
+.login-box{
+    width: 100%;
+    min-height: 300px;
+    /* background-image: linear-gradient(to top, #1C352D, #6b6d67); */
+    background-color: #fff;
+    margin-top: 100px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #929191;
+    padding: 20px 30px;
+}
+.sub-title{
+    color: #000;
+    text-align: center;
+    font-size: 14px;
+}
+.sub-title a{
+    font-weight: bold;
+    color: #8246b4;
+}
+
+.login-box h3{
+    text-align: center !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    /* padding: 20px; */
+    color : #000;
+}
+.login-box label{
+    color: #000;
+}
+.bg-olive-light{
+    background-color: #A6B28B;
+}
+.cart-bottom-box p{
+    color : #fff;
+}
+.btn-border{
+    border-radius: 5px;
+}
+
+.cart-bottom-box .sperator{
+    background-color: #fff;
+    height: 2px;
+    width: 100%;
+    /* margin: 10px; */
+}
