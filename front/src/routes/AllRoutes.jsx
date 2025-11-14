@@ -20,6 +20,8 @@ import ForgotPassword from '../pages/ForgotPassword'
 import ForgotPasswordOTP from '../pages/ForgotPasswordOTP'
 import ConfirmPassword from '../pages/ConfirmPassword'
 import Activation from '../pages/Activation'
+import OrderSummery from '../pages/user/OrderSummery'
+import MyOrder from '../pages/user/MyOrder'
 const AllRoutes = () => {
   // :5173/shop/bags
   // :5173/shop/bags/hand-bags
@@ -50,6 +52,9 @@ const AllRoutes = () => {
         <Route path='buynow/:title/:id' element={<Buynow />} />
 
         <Route path='' element={<UserNavRoutes />}>
+
+          <Route path='my-order' element={<MyOrder />} />
+          <Route path='order-summery/:pid' element={<OrderSummery />} />
           <Route path='change-password' element={<ChangePassword />} />
           <Route path='myaccount' element={<MyAccount />} />
           <Route path='edit' element={<Edit />} />

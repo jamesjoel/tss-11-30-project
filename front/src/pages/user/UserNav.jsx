@@ -59,7 +59,7 @@ const UserNav = () => {
           <div className='alert alert-secondary'>
             <ul className='nav flex-column'>
               <li className='nav-item'>
-                <a className='nav-link' href=''><i class="fa fa-briefcase" aria-hidden="true"></i> My Orders &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                <NavLink className='nav-link' to='/user/my-order'><i class="fa fa-briefcase" aria-hidden="true"></i> My Orders &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></NavLink>
               </li>
               <li className='nav-item'>
                 <NavLink className='nav-link' to='/user/myaccount'><i class="fa fa-user" aria-hidden="true"></i> My Account &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></NavLink>

@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import { API_URL } from '../../config/API';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 const Buynow = () => {
+  let navigate = useNavigate();
   let [user, setUser] = useState({});
   let [pro, setPro] = useState({});
   let param = useParams();
@@ -45,8 +46,9 @@ const Buynow = () => {
           currency : 'INR',
           order_id : response.data.orderId,
           handler : async(rzpyRes)=>{
+            // console.log(rzpyRes)
             let formData = {
-              razorpay_order_id : rzpyRes.razorpay_order_id,
+                  razorpay_order_id : rzpyRes.razorpay_order_id,
                   razorpay_payment_id : rzpyRes.razorpay_payment_id,
                   razorpay_signature : rzpyRes.razorpay_signature,
                   user_id : user._id,
@@ -57,7 +59,9 @@ const Buynow = () => {
                   
             }
             let OrderResponse = await axios.post(`${API_URL}/order/confirm`, formData, { headers : {Authorization : localStorage.getItem("user_access")}})
-            console.log(OrderResponse.data);
+            // console.log(OrderResponse.data);
+            navigate("/user/order-summery/"+param.id)
+            
           }
         }
         let rzpy = window.Razorpay(option);
