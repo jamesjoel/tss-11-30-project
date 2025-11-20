@@ -69,6 +69,9 @@ let GetAllProCateSubCate = async(req, res)=>{
     }
 }
 
-
-export {SaveProduct, DeleteAll, GetAllProCateSubCate, UpdateProduct, DeleteProduct, GetAllProduct, GetByIdProduct}
+let CountProduct = async(req, res)=>{
+    let total = await Product.countDocuments();   
+    res.send({success:true, total});
+}
+export {SaveProduct, CountProduct, DeleteAll, GetAllProCateSubCate, UpdateProduct, DeleteProduct, GetAllProduct, GetByIdProduct}
 

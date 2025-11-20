@@ -11,6 +11,9 @@ import AddSubCategory from '../pages/subcategory/AddSubCategory'
 import ListProducts from '../pages/products/ListProducts'
 import AddProducts from '../pages/products/AddProducts'
 import ListUsers from '../pages/users/ListUsers'
+import All from '../pages/orders/All'
+import Pending from '../pages/orders/Pending'
+import Received from '../pages/orders/Received'
 
 const AllRoutes = () => {
   return (
@@ -22,6 +25,9 @@ const AllRoutes = () => {
           <Route path='/category' element={<ListCategory />} />
           <Route path='/category/add' element={<AddCategory />} />
           <Route path='/category/edit/:id' element={<AddCategory />} />
+          <Route path='/orders' element={<All />} />
+          <Route path='/orders/pending' element={<Pending />} />
+          <Route path='/orders/received' element={<Received />} />
           <Route path='/subcategory' element={<ListSubCategory />} />
           <Route path='/subcategory/add' element={<AddSubCategory />} />
           <Route path='/subcategory/edit/:id' element={<AddSubCategory />} />

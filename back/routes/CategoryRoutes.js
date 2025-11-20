@@ -24,6 +24,8 @@ routes.delete("/:id", IsAdminLoggedIn, DeleteCategory)
     .delete
     you have to send "token" in authorization
 
+    .find({$and : [{age : 25}, {city : "indore"}]})
+
 
 */
 

@@ -25,8 +25,9 @@ let SaveUser = async(req, res)=>{
     req.body.password = sha1(req.body.password);
     let str = randomString({length : 50})
     req.body.emailVerifiyString = str;
+    req.body.activeStatus = 1;
     
-    SendMail(req.body.email, "james.steppingstone@gmail.com", "Activate Your Account", `
+   /* SendMail(req.body.email, "james.steppingstone@gmail.com", "Activate Your Account", `
         <p>Welcome <b>${req.body.name}</b>,</p>
         
 <p>Thanks for signing up.</p>
@@ -45,7 +46,7 @@ Thanks
 
         `)
     
-
+*/
     await User.create(req.body);
     res.send({success:true});
 }
@@ -133,4 +134,9 @@ let UploadProfilePic = async(req, res)=>{
 
 }
 
-export {SaveUser, UploadProfilePic, AccountActivation, DeleteAll, Profile, GetAllUser, UpdateUserProfilePassword, UpdateUser, UpdateUserProfile}
+let CountUser = async(req, res)=>{
+    let total = await User.countDocuments();   
+    res.send({success:true, total});
+}
+
+export {SaveUser, CountUser, UploadProfilePic, AccountActivation, DeleteAll, Profile, GetAllUser, UpdateUserProfilePassword, UpdateUser, UpdateUserProfile}

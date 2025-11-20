@@ -3,6 +3,7 @@ import axios from 'axios'
 import {API_URL, API_PATH} from '../../config/API.js'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import useUserDate from '../../hooks/useUserDate.jsx'
 
 const MyOrder = () => {
   let [allOrder, setAllOrder] = useState([])
@@ -29,6 +30,7 @@ const MyOrder = () => {
               <th>Amount</th>
               <th>Date</th>
               <th>Status</th>
+              <th>Invoice</th>
             </tr>
           </thead>
           <tbody>
@@ -41,8 +43,9 @@ const MyOrder = () => {
                   </td>
                   <td>{item.product_id ? item.product_id.price : ''}</td>
                   <td>{item.amount}</td>
-                  <td>{item.date}</td>
+                  <td>{useUserDate(item.date)}</td>
                   <td>{item.status==1 ? 'Pending' : item.status==2 ? 'Received' : 'Cancle'}</td>
+                  <td><a className='btn btn-sm btn-info' href={`${API_PATH}/invoices/${item.invoice_name}`} download>Invoice <i class="fa fa-download" aria-hidden="true"></i></a></td>
               </tr>)
             }
           </tbody>

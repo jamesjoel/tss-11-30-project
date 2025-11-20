@@ -97,9 +97,9 @@ const NavBar = () => {
         <NavLink className='btn align-items-center rounded'  to='/users'> <i class="fa fa-users pe-2" aria-hidden="true"></i>  Users</NavLink>
         
       </li>
-      
+
       <li className="mb-1">
-        <button className="btn align-items-center rounded collapsed " style={{width : "100%"}} data-bs-toggle="collapse" data-bs-target="#home-collapse4" aria-expanded="false">
+        <button className="btn align-items-center rounded collapsed " style={{width : "100%"}} data-bs-toggle="collapse" data-bs-target="#home-collapse1" aria-expanded="false">
           <div style={{display : "flex", justifyContent : "space-between", alignItems : "center", width : "100%"}}>
             <span>
             <i class="fa fa-gift pe-2" aria-hidden="true"></i> 
@@ -109,14 +109,17 @@ const NavBar = () => {
           </div>
             
         </button>
-        <div className="collapse" id="home-collapse4" >
+        <div className="collapse" id="home-collapse1" >
           <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" className="link-dark rounded">Overview</a></li>
-            <li><a href="#" className="link-dark rounded">Updates</a></li>
-            <li><a href="#" className="link-dark rounded">Reports</a></li>
+            <li><NavLink to="/orders" className="link-dark rounded">All</NavLink></li>
+            <li><NavLink to="/orders/pending" className="link-dark rounded">Pending</NavLink></li>
+            <li><NavLink to="/orders/received" className="link-dark rounded">Received</NavLink></li>
+            
           </ul>
         </div>
       </li>
+      
+      
       <li className="mb-0 nav-item">
         <a className='btn align-items-center rounded'  href=''> <i class="fa fa-cog pe-2" aria-hidden="true"></i>  Setting</a>
         

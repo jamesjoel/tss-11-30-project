@@ -24,6 +24,7 @@ const AddProducts = () => {
 
 
     let proFrm = useFormik({
+      enableReinitialize : true,
       initialValues : {
               title : "",
           price : "",
@@ -33,7 +34,9 @@ const AddProducts = () => {
           detail : "",
           cate_id : "",
           sub_cate_id : "",
-          image : ""
+          image : "",
+          cost_price : "",
+          shipping : 0
       },
       onSubmit : (formData)=>{
         // console.log(formData);return;
@@ -49,6 +52,8 @@ const AddProducts = () => {
         ProData.append("cate_id", formData.cate_id);
         ProData.append("sub_cate_id", formData.sub_cate_id);
         ProData.append("image", myfile);
+        ProData.append("cost_price", formData.cost_price);
+        ProData.append("shipping", formData.shipping);
 
         
         axios
@@ -70,6 +75,28 @@ const AddProducts = () => {
             setAllSubCate(response.data.result)
         })
     }
+
+
+    let calcShipping = (e)=>{
+      // console.log(e.target.value)
+      if(e.target.value=="small"){
+          let x = 70;
+          // console.log(x)
+          proFrm.setFieldValue("shipping", x)
+        }
+        if(e.target.value=="medium"){
+          let x = 70 * 2;
+          
+          proFrm.setFieldValue("shipping", x)
+          
+        }
+        if(e.target.value=="large"){
+          let x = 70 * 3;
+          proFrm.setFieldValue("shipping", x)
+          
+
+      }
+    }
   return (
     <div className='container'>
       <div className="row">
@@ -83,6 +110,8 @@ const AddProducts = () => {
           <input name='title' onChange={proFrm.handleChange} type='text' placeholder='Product Title' className='form-control textbox-bg' />
           <label className='my-3'>Price</label>
           <input name='price' onChange={proFrm.handleChange} type='text' placeholder='Product Price' className='form-control textbox-bg' />
+          <label className='my-3'>Cost Price</label>
+          <input name='cost_price' onChange={proFrm.handleChange} type='text' placeholder='Product Cost Price' className='form-control textbox-bg' />
           <label className='my-3'>Select Product Image</label>
           <input name='image' ref={image} onChange={proFrm.handleChange} type='file' className='form-control textbox-bg' />
           <label className='my-3'>Color</label>
@@ -98,13 +127,14 @@ const AddProducts = () => {
             <option value="gray">Gray</option>
           </select>
           <label  className='my-3'>Size</label>
-           <select name='size' onChange={proFrm.handleChange} className='form-control textbox-bg'>
+           <select name='size' onChange={(e)=>{proFrm.handleChange(e); calcShipping(e)}} className='form-control textbox-bg'>
             <option>Select Size</option>
             <option value="small">Small</option>
             <option value="medium">Medium</option>
             <option value="large">Large</option>
            </select>
-
+          <label className='my-3'>Shipping (size * 70)</label>
+          <input type='text' name='shipping' value={proFrm.values.shipping} className='form-control textbox-bg' onChange={proFrm.handleChange} />
           <label className='my-3'>Select Category</label>
           <select name='cate_id' onChange={(e)=>{getAllSubCate(e); proFrm.handleChange(e)}} className='form-control textbox-bg'>
             <option>Select Category</option>
@@ -162,6 +192,37 @@ onMouseMove
 onCopy
 onPaste
 onPrint
+
+
+onChange = {(e)=>setName(e.target.value)}
+
+
+(e)=>{
+  setName(e.target.value);
+
+}
+
+
+onChange = {form.handleChange}
+
+
+onChange = {(e)=>{ form.handleChange(e); myfun(e) }}
+
+
+
+
+
+
+
+
+function demo(a){
+  return "hello"
+}
+
+let demo = a =>
+  "hello"
+
+
 
 
 

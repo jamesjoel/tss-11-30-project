@@ -9,7 +9,14 @@ let OrderSchema = mongoose.Schema({
     date : { type : Date, default : new Date()},
     amount : Number,
     address : String,
-    invoice_num : String
+    invoice_num : String,
+    status : {type : Number, default : 1},
+    invoice_name : String,
+    shipping : Number,
+    // 1 - placed
+    // 2 - shipped
+    // 3 - received
+    // 4 - cancle
 })
 
 let Order = mongoose.model("order", OrderSchema)

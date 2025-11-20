@@ -8,7 +8,9 @@ let ProSchema = mongoose.Schema({
     detail : String,
     cate_id : { type : mongoose.Schema.Types.ObjectId, ref : "category" },
     sub_cate_id : { type : mongoose.Schema.Types.ObjectId, ref : "subcategory" },
-    image : String
+    image : String,
+    cost_price : Number,
+    shipping : Number
     
 }, {timestamps : true})
 

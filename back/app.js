@@ -6,6 +6,8 @@ import Upload from 'express-fileupload'
 import Path from 'path'
 const app = express();
 
+
+
 // for view assets folder files in "Front End"
 
 app.use(express.static(Path.resolve()+"/assets"));
@@ -14,6 +16,7 @@ app.use(express.static(Path.resolve()+"/assets"));
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+
 app.use(cors());
 app.use(Upload());
 

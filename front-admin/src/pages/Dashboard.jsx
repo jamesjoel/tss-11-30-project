@@ -1,5 +1,38 @@
 import React from 'react'
-const Dashboard = () => {
+import axios from 'axios'
+import {API_URL} from '../config/API'
+import { useState } from 'react'
+import { useEffect } from 'react'
+const Dashboard  = () => {
+
+  let [totalPro, setTotalPro] = useState({});
+  let [totalOrder, setTotalOrder] = useState({});
+  let [totalPendingOrder, setTotalPendingOrder] = useState({});
+  useEffect(()=>{
+    axios
+    .get(`${API_URL}/product/countproduct`, {headers : {Authorization : localStorage.getItem("admin_access")}})
+    .then(response=>{
+      // console.log(response.data)
+      setTotalPro(response.data)
+    })
+  },[])
+  useEffect(()=>{
+    axios
+    .get(`${API_URL}/order/countorder`, {headers : {Authorization : localStorage.getItem("admin_access")}})
+    .then(response=>{
+      // console.log(response.data)
+      setTotalOrder(response.data)
+    })
+  },[])
+  useEffect(()=>{
+    axios
+    .get(`${API_URL}/order/countpendingorder`, {headers : {Authorization : localStorage.getItem("admin_access")}})
+    .then(response=>{
+      // console.log(response.data)
+      setTotalPendingOrder(response.data)
+    })
+  },[])
+
   return (
      <>
             <div className="col-12">
@@ -7,139 +40,77 @@ const Dashboard = () => {
                 <div className="card-body">
                   <div className="d-md-flex align-items-center">
                     <div>
-                      <h4 className="card-title">Products Performance</h4>
+                      <h4 className="card-title">Dashboard</h4>
                       <p className="card-subtitle">
                         Ample Admin Vs Pixel Admin
                       </p>
                     </div>
-                    <div className="ms-auto mt-3 mt-md-0">
-                      <select className="form-select theme-select border-0" aria-label="Default select example">
-                        <option value="1">March 2025</option>
-                        <option value="2">March 2025</option>
-                        <option value="3">March 2025</option>
-                      </select>
+                   
+                  </div>
+
+                </div>
+              </div>
+              <div className='row'>
+                  <div className="col-md-3">
+                    <div className="alert alert-info ">
+                      <div className='d-flex justify-content-evenly'>
+
+                        <div>
+                          <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                          <h3>Users</h3>
+                        </div>
+                      </div>
+                        <h1 className='text-center'>1450</h1>
+
                     </div>
                   </div>
-                  <div className="table-responsive mt-4">
-                    <table className="table mb-0 text-nowrap varient-table align-middle fs-3">
-                      <thead>
-                        <tr>
-                          <th scope="col" className="px-0 text-muted">
-                            Assigned
-                          </th>
-                          <th scope="col" className="px-0 text-muted">Name</th>
-                          <th scope="col" className="px-0 text-muted">
-                            Priority
-                          </th>
-                          <th scope="col" className="px-0 text-muted text-end">
-                            Budget
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td className="px-0">
-                            <div className="d-flex align-items-center">
-                              <img src="/public/images/profile/user-3.jpg" className="rounded-circle" width="40"
-                                alt="flexy" />
-                              <div className="ms-3">
-                                <h6 className="mb-0 fw-bolder">Sunil Joshi</h6>
-                                <span className="text-muted">Web Designer</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-0">Elite Admin</td>
-                          <td className="px-0">
-                            <span className="badge bg-info">Low</span>
-                          </td>
-                          <td className="px-0 text-dark fw-medium text-end">
-                            $3.9K
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="px-0">
-                            <div className="d-flex align-items-center">
-                              <img src="/public/images/profile/user-5.jpg" className="rounded-circle" width="40"
-                                alt="flexy" />
-                              <div className="ms-3">
-                                <h6 className="mb-0 fw-bolder">
-                                  Andrew McDownland
-                                </h6>
-                                <span className="text-muted">Project Manager</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-0">Real Homes WP Theme</td>
-                          <td className="px-0">
-                            <span className="badge text-bg-primary">Medium</span>
-                          </td>
-                          <td className="px-0 text-dark fw-medium text-end">
-                            $24.5K
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="px-0">
-                            <div className="d-flex align-items-center">
-                              <img src="/public/images/profile/user-6.jpg" className="rounded-circle" width="40"
-                                alt="flexy" />
-                              <div className="ms-3">
-                                <h6 className="mb-0 fw-bolder">
-                                  Christopher Jamil
-                                </h6>
-                                <span className="text-muted">SEO Manager</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-0">MedicalPro WP Theme</td>
-                          <td className="px-0">
-                            <span className="badge bg-warning">Hight</span>
-                          </td>
-                          <td className="px-0 text-dark fw-medium text-end">
-                            $12.8K
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="px-0">
-                            <div className="d-flex align-items-center">
-                              <img src="/public/images/profile/user-7.jpg" className="rounded-circle" width="40"
-                                alt="flexy" />
-                              <div className="ms-3">
-                                <h6 className="mb-0 fw-bolder">Nirav Joshi</h6>
-                                <span className="text-muted">Frontend Engineer</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-0">Hosting Press HTML</td>
-                          <td className="px-0">
-                            <span className="badge bg-danger">Low</span>
-                          </td>
-                          <td className="px-0 text-dark fw-medium text-end">
-                            $2.4K
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="px-0">
-                            <div className="d-flex align-items-center">
-                              <img src="/public/images/profile/user-8.jpg" className="rounded-circle" width="40"
-                                alt="flexy" />
-                              <div className="ms-3">
-                                <h6 className="mb-0 fw-bolder">Micheal Doe</h6>
-                                <span className="text-muted">Content Writer</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-0">Helping Hands WP Theme</td>
-                          <td className="px-0">
-                            <span className="badge bg-success">Low</span>
-                          </td>
-                          <td className="px-0 text-dark fw-medium text-end">
-                            $9.3K
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <div className="col-md-3">
+                    <div className="alert alert-info ">
+                      <div className='d-flex justify-content-evenly'>
+
+                        <div>
+                          <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                          <h3>Products</h3>
+                        </div>
+                      </div>
+                        <h1 className='text-center'>{totalPro.total}</h1>
+
+                    </div>
                   </div>
-                </div>
+                  <div className="col-md-3">
+                    <div className="alert alert-info ">
+                      <div className='d-flex justify-content-evenly'>
+
+                        <div>
+                          <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                          <h3>All Orders</h3>
+                        </div>
+                      </div>
+                        <h1 className='text-center'>{totalOrder.total}</h1>
+
+                    </div>
+                  </div>
+                  <div className="col-md-3">
+                    <div className="alert alert-info ">
+                      <div className='d-flex justify-content-evenly'>
+
+                        <div>
+                          <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                          <h3>Pending Orders</h3>
+                        </div>
+                      </div>
+                        <h1 className='text-center'>{totalPendingOrder.total}</h1>
+
+                    </div>
+                  </div>
               </div>
             </div>
     </>

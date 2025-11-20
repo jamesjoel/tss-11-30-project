@@ -36,7 +36,7 @@ const Buynow = () => {
   },[])
 
   let checkout = async()=>{
-    let amt = 150 + pro.price - (pro.price*pro.discount/100);
+    let amt = pro.shipping + pro.price - (pro.price*pro.discount/100);
     let response = await axios.post(`${API_URL}/order/checkout`, { amount : amt }, { headers : {Authorization : localStorage.getItem("user_access")}});
     // console.log(response.data)
     if(response.data.success==true){
@@ -53,7 +53,7 @@ const Buynow = () => {
                   razorpay_signature : rzpyRes.razorpay_signature,
                   user_id : user._id,
                   product_id : param.id,
-                  
+                  shipping : pro.shipping,
                   amount : amt,
                   address : user.address,
                   
@@ -96,14 +96,14 @@ const Buynow = () => {
           </p>
          <p className='d-flex justify-content-between'>
             <span>Shipping</span>
-            <span>+ 150.00</span>
+            <span>+ {pro.shipping}</span>
           </p>
 
          
          <hr />
          <p className='fw-bold d-flex justify-content-between'>
           <span>Total Payable</span>
-          <span>{ 150 + pro.price - (pro.price*pro.discount/100)}</span>
+          <span>{ pro.shipping + pro.price - (pro.price*pro.discount/100)}</span>
          </p>
          <br />
          <button onClick={checkout} className='btn btn-primary'>Checkuot</button>
