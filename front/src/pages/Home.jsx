@@ -5,11 +5,13 @@ import Categories from '../components/Categories'
 import Collections from '../components/Collections'
 import BestSelling from '../components/BestSelling'
 import axios from 'axios'
-import {API_URL} from '../config/API'
+// import {API_URL} from '../config/API'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import ProductBox from '../ui/ProductBox'
 const Home = () => {
+  
+  let API_URL = import.meta.env.VITE_API_URL;
 
   let [allPro, setAllPro] = useState([]);
 

@@ -15,7 +15,7 @@ const Collections = () => {
           <div className="col-md-6 column-container bg-white">
             <div className="collection-content p-5 m-0 m-md-5">
               <h3 className="element-title text-uppercase">classNameic winter collection</h3>
-              <p>Dignissim lacus, turpis ut suspendisse vel tellus. Turpis purus, gravida orci, fringilla a. Ac sed eu
+              <p>lore Dignissim lacus, turpis ut suspendisse vel tellus. Turpis purus, gravida orci, fringilla a. Ac sed eu
                 fringilla odio mi. Consequat pharetra at magna imperdiet cursus ac faucibus sit libero. Ultricies quam
                 nunc, lorem sit lorem urna, pretium aliquam ut. In vel, quis donec dolor id in. Pulvinar commodo mollis
                 diam sed facilisis at cursus imperdiet cursus ac faucibus sit faucibus sit libero.</p>

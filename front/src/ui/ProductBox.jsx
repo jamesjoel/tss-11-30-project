@@ -19,7 +19,7 @@ const ProductBox = ({item}) => {
             <div className="product-item image-zoom-effect link-effect">
               <div className="image-holder position-relative">
                 <a href="index.html">
-                  <img src={`${API_PATH}/product_images/${item.image}`} alt="categories" className="product-image img-fluid" />
+                  <img src={`${import.meta.env.VITE_API_PATH}/product_images/${item.image}`} style={{height : "150px", width : "150px"}} alt="categories" className="product-image img-fluid" />
                 </a>
                 <a href="index.html" className="btn-icon btn-wishlist">
                   <svg width="24" height="24" viewBox="0 0 24 24">

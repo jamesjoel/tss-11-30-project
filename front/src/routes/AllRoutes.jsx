@@ -22,6 +22,7 @@ import ConfirmPassword from '../pages/ConfirmPassword'
 import Activation from '../pages/Activation'
 import OrderSummery from '../pages/user/OrderSummery'
 import MyOrder from '../pages/user/MyOrder'
+import NotFound from '../pages/NotFound'
 const AllRoutes = () => {
   // :5173/shop/bags
   // :5173/shop/bags/hand-bags
@@ -63,6 +64,8 @@ const AllRoutes = () => {
 
 
       </Route>
+
+      <Route path='*' element={<NotFound />} />
 
     </Routes>
   )

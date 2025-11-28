@@ -44,7 +44,7 @@ const MyOrder = () => {
                   <td>{item.product_id ? item.product_id.price : ''}</td>
                   <td>{item.amount}</td>
                   <td>{useUserDate(item.date)}</td>
-                  <td>{item.status==1 ? 'Pending' : item.status==2 ? 'Received' : 'Cancle'}</td>
+                  <td>{item.status==1 ? 'Placed' : item.status==2 ? 'Shipped' : item.status==3 ? 'Received' : 'Cancle'}</td>
                   <td><a className='btn btn-sm btn-info' href={`${API_PATH}/invoices/${item.invoice_name}`} download>Invoice <i class="fa fa-download" aria-hidden="true"></i></a></td>
               </tr>)
             }
