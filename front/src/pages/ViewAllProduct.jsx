@@ -46,8 +46,25 @@ const ViewAllProduct = () => {
     
   }
 
+
+  useEffect(()=>{
+    GetAllProductByFilterOnPageRefresh();
+  },[])
+
+  let GetAllProductByFilterOnPageRefresh = async()=>{
+    console.log("***********")
+    const allParamsObject = Object.fromEntries(searchParams.entries())
+    console.log("***********", allParamsObject)
+    const queryString = new URLSearchParams(allParamsObject).toString();
+    // console.log(queryString)
+    let response = await axios.get(`${import.meta.env.VITE_API_URL}/search?${queryString}`);
+    setAllPro(response.data.result)
+  }
+  
+
   let GetAllProductByFilter = async(obj, isSubCate=false)=>{
     const allParamsObject = Object.fromEntries(searchParams.entries())
+    // console.log(allParamsObject);
     if(isSubCate==true){
         delete allParamsObject.subcategory;
     }
@@ -59,6 +76,7 @@ const ViewAllProduct = () => {
     let response = await axios.get(`${import.meta.env.VITE_API_URL}/search?${queryString}`);
     setAllPro(response.data.result)
 }
+
 
 
 
@@ -148,8 +166,20 @@ let clearFilterHandler = (obj)=>{
     setClearFilterArr(arr);
 }
 
-let removeClearFilter = (value)=>{
-    console.log(value)
+let removeClearFilter = async(value)=>{
+    let x = clearFilterArr;
+    let y = x.filter(item=>item!=value);
+
+    setClearFilterArr(y);
+    let urlobj = Object.assign({}, ...y);
+    setSearchParams(urlobj);
+    const queryString = new URLSearchParams(urlobj).toString();
+    // console.log(queryString)
+    let response = await axios.get(`${import.meta.env.VITE_API_URL}/search?${queryString}`);
+    setAllPro(response.data.result)
+    
+    
+    
 }
 
 
@@ -229,7 +259,7 @@ let removeClearFilter = (value)=>{
                 <p>All Product</p>
                 <div>
                     {
-                       clearFilterArr.map((item)=><span className='clear-filter'>{ item[Object.keys(item)] } 
+                       clearFilterArr.map((item)=><span onClick={()=>removeClearFilter(item)} className='clear-filter'>{ item[Object.keys(item)] } 
                         &nbsp;<i className='fa fa-close'></i>
                     </span>)
                     }                
