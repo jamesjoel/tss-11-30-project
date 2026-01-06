@@ -16,10 +16,11 @@ const ProductBox = ({item}) => {
 
   return (
     <div className="col-md-3">
+        <div style={{position : "relative", left : 140, top : 30,  zIndex : 999, backgroundColor : "#01beb8", width : 35, textAlign : "center", color:"#fff", fontSize : 15, borderRadius : 50, padding : 3}}>{item.discount}%</div>
             <div className="product-item image-zoom-effect link-effect">
               <div className="image-holder position-relative">
                 <a href="index.html">
-                  <img src={`${import.meta.env.VITE_API_PATH}/product_images/${item.image}`} style={{height : "150px", width : "150px"}} alt="categories" className="product-image img-fluid" />
+                  <img src={item.image=='' ? `${import.meta.env.VITE_API_PATH}/product_images/product_avatar.jpg` : `${import.meta.env.VITE_API_PATH}/product_images/${item.image}`} style={{height : "150px", width : "150px"}} alt="categories" className="product-image img-fluid" />
                 </a>
                 <a href="index.html" className="btn-icon btn-wishlist">
                   <svg width="24" height="24" viewBox="0 0 24 24">

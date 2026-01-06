@@ -9,10 +9,10 @@ const Header = () => {
             <ul className="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                
               <li className="nav-item dropdown">
-                <a className="nav-link show dropdown-toggle" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="true">
+                <a className="nav-link dropdown-toggle" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
                   {localStorage.getItem("admin_name")}
                 </a>
-                <div className="dropdown-menu dropdown-menu-end dropdown-menu-animate-up show" aria-labelledby="drop2" data-bs-popper="static">
+                <div className="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2" data-bs-popper="static">
                   <div className="message-body">
                     <a href="javascript:void(0)" className="d-flex align-items-center gap-2 dropdown-item">
                       <i className="ti ti-user fs-6"></i>

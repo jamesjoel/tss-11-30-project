@@ -1,9 +1,17 @@
 import React, { useEffect } from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import NavBar from '../components/NavBar'
 import Header from '../components/Header'
 
 const ProtactedRoute = () => {
+
+  let location = useLocation();
+  let pathname = location.pathname; //   /category, /subcategory, /product, /order
+  // 
+  let type = localStorage.getItem("prev_type");
+  let showEditDelete = type=="A" || type=="B" ? true : false;
+
+  
     let navigate = useNavigate();
     useEffect(()=>{
         if(! localStorage.getItem("admin_access")){
@@ -29,7 +37,9 @@ const ProtactedRoute = () => {
           <div className="row">
             <div style={{minHeight : "700px"}}>
 
-                <Outlet />
+                <Outlet context={showEditDelete} />
+
+
             </div>
           </div>
           </div>

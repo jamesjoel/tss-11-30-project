@@ -1,11 +1,13 @@
 import express from 'express';
 import IsAdminLoggedIn from '../util/IsAdminLoggedIn.js';
-import {SaveProduct, GetAllProduct, CountProduct, GetByIdProduct, GetAllProCateSubCate, UpdateProduct, DeleteProduct, DeleteAll} from '../controllers/ProductController.js'
+import {SaveProduct, GetAllProduct, UploadImage, CountProduct, GetAllLatestCollProduct, GetByIdProduct, GetAllProCateSubCate, UpdateProduct, DeleteProduct, DeleteAll} from '../controllers/ProductController.js'
 
 const routes = express.Router();
 
 routes.get("/", GetAllProduct)
+routes.get("/latestcollection", GetAllLatestCollProduct)
 routes.get("/countproduct", IsAdminLoggedIn, CountProduct)
+routes.put("/uploadimage/:id", IsAdminLoggedIn, UploadImage)
 routes.get("/deleteall", DeleteAll)
 
 routes.get("/getallproductbycateandsubcate/:cate", GetAllProCateSubCate)

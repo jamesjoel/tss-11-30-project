@@ -5,30 +5,11 @@ import Path from 'path'
 import { UniqueString } from 'unique-string-generator'
 
 let SaveProduct = async(req, res)=>{
-    
-    let uniqueName = UniqueString();
-    let image = req.files.image;
-    let imagename = image.name; // 1.hello.test.10.jpg
-
-    
-    let extArr = imagename.split(".");
-    let ext = extArr[extArr.length-1];
-    let newname = uniqueName+"."+ext;
-
-    req.body.image =  newname// ODgyXzE2Nzk1MDQyMDcxNDZfNDkx.jpg
-
-    // Path.resolve()
-    let upload_path = Path.resolve()+"/assets/product_images/"+newname;
-
-    image.mv(upload_path, (err)=>{
-        console.log("***********");
-    });
-
     let result = await Product.create(req.body);
     res.send({success:true, result});
 }
 let GetAllProduct = async(req, res)=>{
-    let result = await Product.find();
+    let result = await Product.find().sort({_id : -1});
     res.send({success:true, result});
 }
 let GetByIdProduct = async(req, res)=>{
@@ -73,5 +54,61 @@ let CountProduct = async(req, res)=>{
     let total = await Product.countDocuments();   
     res.send({success:true, total});
 }
-export {SaveProduct, CountProduct, DeleteAll, GetAllProCateSubCate, UpdateProduct, DeleteProduct, GetAllProduct, GetByIdProduct}
 
+
+let GetAllLatestCollProduct = async(req, res)=>{
+     const results = await Product.aggregate([
+    { $sort: { createdAt: -1 } },
+    {
+      $group: {
+        _id: "$cate_id",
+        latestProduct: { $first: "$$ROOT" }
+      }
+    },
+    {
+      $lookup: {
+        from: "categories",
+        localField: "_id", 
+        foreignField: "_id",
+        as: "category"
+      }
+    },
+    {
+      $lookup: {
+        from: "subcategories",
+        localField: "latestProduct.sub_cate_id",
+        foreignField: "_id",
+        as: "subcategory"
+      }
+    }
+  ]).exec();
+    res.send({success: true, result : results});
+}
+
+let UploadImage = async(req, res)=>{
+  // console.log(req.params);
+  // console.log(req.files);
+
+  let id = req.params.id;
+  let photo = req.files.image;
+  let oldname = photo.name;
+  let arr = oldname.split(".");
+  let ext = arr[arr.length-1];
+  let newname = UniqueString()+"."+ext;
+  // console.log(newname);return;
+  photo.mv(Path.resolve()+"/assets/product_images/"+newname, async(err)=>{
+    await Product.updateMany({_id : id}, {image : newname})
+    res.send({success:true, name : newname})
+  })
+}
+export {SaveProduct,UploadImage, GetAllLatestCollProduct, CountProduct, DeleteAll, GetAllProCateSubCate, UpdateProduct, DeleteProduct, GetAllProduct, GetByIdProduct}
+
+/*
+MongoDB --- DB Engine --- Queries --- 
+Mongoose --- Function
+
+
+
+MongoDB ---- deleteMany({city : "indore"}), deleteOne({city : "indore"}), deleteLast, deleteFirst
+
+*/

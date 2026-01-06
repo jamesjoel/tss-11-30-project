@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import {API_URL} from '../../config/API'
 import { ToastContainer, toast } from 'react-toastify'
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useOutletContext } from 'react-router-dom'
 import axios from 'axios'
 import DeleteBox from '../../ui/DeleteBox';
 const ListCategory = () => {
+
+  let type = localStorage.getItem("prev_type")
 
   let navigate = useNavigate();
   let [showDelBox, setShowDelBox] = useState(false);
@@ -63,8 +65,18 @@ const ListCategory = () => {
             <tr>
               <th>S.No.</th>
               <th>Title</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              {
+                useOutletContext()
+                ?
+                <>
+                <th>Edit</th>
+                <th>Delete</th>
+                </>
+                :
+                ''
+                
+              }
+              
             </tr>
           </thead>
           <tbody>
@@ -72,8 +84,18 @@ const ListCategory = () => {
               allCate.map((item, index)=><tr key={index}>
                 <td>{index+1}</td>
                 <td>{item.title}</td>
+
+                {
+                  useOutletContext()
+                  ?
+                  <>
                 <td><button onClick={()=>goToEdit(item)}  className='btn btn-sm btn-info'><i className='fa fa-pencil'></i></button></td>
                 <td><button onClick={()=>askDelete(item)} className='btn btn-sm btn-danger'><i className='fa fa-trash'></i></button></td>
+                  </>
+                  :
+                  ''
+                }
+              
               </tr>)
             }
           </tbody>

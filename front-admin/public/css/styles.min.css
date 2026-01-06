@@ -5096,9 +5096,14 @@ textarea.form-control-lg {
 .page-link.active, .active > .page-link {
   z-index: 3;
   color: var(--bs-pagination-active-color);
-  background-color: var(--bs-pagination-active-bg);
+  background-color: #1a97f5 !important;
   border-color: var(--bs-pagination-active-border-color);
 }
+
+.page-item.active{
+  background-color: #1a97f5;
+}
+
 .page-link.disabled, .disabled > .page-link {
   color: var(--bs-pagination-disabled-color);
   pointer-events: none;
@@ -7701,6 +7706,9 @@ textarea.form-control-lg {
 .overflow-y-visible {
   overflow-y: visible !important;
 }
+
+
+
 
 .overflow-y-scroll {
   overflow-y: scroll !important;

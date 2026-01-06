@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { API_URL } from '../../config/API'
 import axios from 'axios'
+import OrderTable from '../../ui/OrderTable';
 
 const All = () => {
     let [allOrder, setAllOrder] = useState([]);
@@ -13,20 +14,20 @@ const All = () => {
     }, [])
 
 
-    let changeStatus = (e, orderObj)=>{
-        // console.log(e.target.value)
-        // console.log(orderObj)
-        axios
-        .put(`${API_URL}/order/updateorderstatus/${orderObj._id}`, {status : e.target.value}, {headers : {Authorization : localStorage.getItem("admin_access")}})
-        .then(response=>{
-            console.log(response.data);
-        })
-    }
-
+   
     return (
         <div className='container'>
-            <h5>List of All Orders</h5>
-            <div className="table-responsive mt-4">
+            <h5>List of All Orders ({allOrder.length})</h5>
+            <OrderTable allOrder={allOrder} type={'All'} />         
+            
+        </div>
+    )
+}
+
+export default All
+
+/*
+<div className="table-responsive mt-4">
                 <table className="table mb-0 text-nowrap varient-table align-middle fs-3">
                     <thead>
                         <tr>
@@ -101,8 +102,5 @@ const All = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
-    )
-}
 
-export default All
+*/

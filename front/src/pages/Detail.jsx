@@ -5,8 +5,10 @@ import {NavLink, useParams, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import { API_URL, API_PATH } from '../config/API'
 import { useState } from 'react'
+import {useDispatch} from 'react-redux'
+import { addCart, addCartServer } from '../redux/CartSlice'
 const Detail = () => {
-
+  let disp = useDispatch();
   let param = useParams();
   let navigate = useNavigate();
 
@@ -53,6 +55,18 @@ const Detail = () => {
     navigate("/login")
   }
 
+  let addToCart = (obj)=>{
+    // console.log(obj);
+    if(localStorage.getItem("user_access")){
+      disp(addCartServer(obj));
+    }else{
+
+      disp(addCart(obj))
+    }
+    
+    
+  }
+
   return (
     <>
     <div className="container my-5">
@@ -61,7 +75,7 @@ const Detail = () => {
           <img src={`${API_PATH}/product_images/${pro.image}`} className='img-thumbnail' />
           <br />
           <button onClick={checkUserLoggedIn} className='btn m-3 btn-lg btn-success'>Buy Now</button>
-          <NavLink to='' className='btn m-3 btn-lg btn-primary'>Add To Cart</NavLink>
+          <button onClick={()=>addToCart(pro)} className='btn m-3 btn-lg btn-primary'>Add To Cart</button>
         </div>
         <div className="col-md-7">
           <p>

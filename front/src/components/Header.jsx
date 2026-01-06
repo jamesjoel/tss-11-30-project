@@ -6,14 +6,17 @@ import {API_URL} from '../config/API'
 import { useEffect } from 'react'
 import CatetegoryDropDown from '../ui/CatetegoryDropDown'
 import CategoryDropDown2 from '../ui/CategoryDropDown2'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
 
   let [cateData, setCateData] = useState([]);
+  let cartPro = useSelector(state=>state.CartSlice);
+  let userLoggedIn = useSelector(state=>state.AuthSlice);
 
   useEffect(()=>{
     axios
-    .get(`${API_URL}/category`)
+    .get(`${import.meta.env.VITE_API_URL}/category`)
     .then(response=>{
       setCateData(response.data.result);
     })
@@ -66,7 +69,7 @@ const Header = () => {
                   <NavLink className="nav-link" to="/contact">Contact</NavLink>
                 </li>
                 {
-                  !localStorage.getItem("user_access")
+                  !userLoggedIn
                   ?
                   <>
                   <li className="nav-item">
@@ -91,7 +94,7 @@ const Header = () => {
             
             
             {
-              localStorage.getItem("user_access")
+              userLoggedIn
               ?
               <li className="d-lg-block dropdown">
               <a href='#' data-bs-toggle="dropdown" className='dropdown-toggle'>{localStorage.getItem("user_name")}</a>
@@ -106,7 +109,7 @@ const Header = () => {
             ''
             }
             <li className="d-lg-block">
-              <NavLink to="/mycart" className="text-uppercase mx-3"><i className='fa fa-shopping-cart'></i> <span className="cart-count">(0)</span>
+              <NavLink to="/mycart" className="text-uppercase mx-3"><i className='fa fa-shopping-cart'></i> <span className="cart-count">({cartPro.length})</span>
               </NavLink>
             </li>
             

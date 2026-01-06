@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom'
 
 const AddProducts = () => {
 
-    let image = useRef();
+   
 
     let navigate = useNavigate();
 
@@ -34,30 +34,16 @@ const AddProducts = () => {
           detail : "",
           cate_id : "",
           sub_cate_id : "",
-          image : "",
+          
           cost_price : "",
           shipping : 0
       },
       onSubmit : (formData)=>{
         // console.log(formData);return;
-        let ProData = new FormData();
-        // create new FormData object for sending "files" and "other form data"
-        let myfile = image.current.files[0];
-        ProData.append("title", formData.title);
-        ProData.append("price", formData.price);
-        ProData.append("color", formData.color);
-        ProData.append("size", formData.size);
-        ProData.append("discount", formData.discount);
-        ProData.append("detail", formData.detail);
-        ProData.append("cate_id", formData.cate_id);
-        ProData.append("sub_cate_id", formData.sub_cate_id);
-        ProData.append("image", myfile);
-        ProData.append("cost_price", formData.cost_price);
-        ProData.append("shipping", formData.shipping);
-
+       
         
         axios
-        .post(`${API_URL}/product`, ProData, { headers : {Authorization : localStorage.getItem("admin_access")}})
+        .post(`${API_URL}/product`, formData, { headers : {Authorization : localStorage.getItem("admin_access")}})
         .then(response=>{
           // console.log(response.data.result)
           navigate("/products")
@@ -112,8 +98,7 @@ const AddProducts = () => {
           <input name='price' onChange={proFrm.handleChange} type='text' placeholder='Product Price' className='form-control textbox-bg' />
           <label className='my-3'>Cost Price</label>
           <input name='cost_price' onChange={proFrm.handleChange} type='text' placeholder='Product Cost Price' className='form-control textbox-bg' />
-          <label className='my-3'>Select Product Image</label>
-          <input name='image' ref={image} onChange={proFrm.handleChange} type='file' className='form-control textbox-bg' />
+          
           <label className='my-3'>Color</label>
           <select name='color' onChange={proFrm.handleChange}  className='form-control textbox-bg'>
             <option>Select Color</option>

@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useOutletContext} from 'react-router-dom'
 import {API_URL} from '../../config/API'
 import DeleteBox from '../../ui/DeleteBox'
+
+
 const ListSubCategory = () => {
+
+  
 
   let navigate = useNavigate();
 
@@ -46,6 +50,7 @@ const ListSubCategory = () => {
         isClose={deleteBoxKoBundKaro}
         showDelBox={showDelBox}
       />
+      
      <div className='container'>
       <div className="row">
         <h5>List All Sub-Categories</h5>
@@ -59,8 +64,18 @@ const ListSubCategory = () => {
               <th>S.No.</th>
               <th>Category Title</th>
               <th>Sub-Category Title</th>
-              <th>Edit</th>
-              <th>Delete</th>
+
+              {
+                              useOutletContext()
+                              ?
+                              <>
+                              <th>Edit</th>
+                              <th>Delete</th>
+                              </>
+                              :
+                              ''
+                              
+                            }
             </tr>
           </thead>
           <tbody>
@@ -69,8 +84,16 @@ const ListSubCategory = () => {
                 <td>{index+1}</td>
                 <td>{item.cate_id.title}</td>
                 <td>{item.title}</td>
+                {
+                  useOutletContext()
+                  ?
+                  <>
                 <td><button onClick={()=>goToEdit(item)} className='btn btn-info btn-sm'><i className='fa fa-pencil'></i></button></td>
                 <td><button onClick={()=>askDelete(item)} className='btn btn-danger btn-sm'><i className='fa fa-trash'></i></button></td>
+                  </>
+                  :
+                  ''
+                }
               
               </tr>)
             }

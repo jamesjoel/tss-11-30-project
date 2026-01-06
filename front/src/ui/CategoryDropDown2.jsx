@@ -9,7 +9,7 @@ const CategoryDropDown2 = () => {
     let [data, setData] = useState([]);
     useEffect(() => {
         axios
-            .get(`${API_URL}/category/getallcategorywithsubcate`)
+            .get(`${import.meta.env.VITE_API_URL}/category/getallcategorywithsubcate`)
             .then(response => {
                 setData(response.data);
             })

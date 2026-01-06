@@ -6,7 +6,10 @@ let OrderSchema = mongoose.Schema({
     razorpay_signature : String,
     user_id : { type : mongoose.Schema.Types.ObjectId, ref : "user"},
     product_id : { type : mongoose.Schema.Types.ObjectId, ref : "product"},
-    date : { type : Date, default : new Date()},
+    date : { type : Date, default : new Date()}, // placed date
+    date_shipped : {type : Date, default : null}, 
+    date_received : {type : Date, default : null},
+    date_canceled : {type : Date, default : null},
     amount : Number,
     address : String,
     invoice_num : String,

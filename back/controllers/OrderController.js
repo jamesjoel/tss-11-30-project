@@ -171,7 +171,7 @@ let ConfirmOrder = async(req, res)=>{
 
 }
 let GetAllOrder = async(req, res)=>{
-    let result = await Order.find().populate("user_id").populate("product_id").exec();
+    let result = await Order.find().populate("user_id").populate("product_id").sort({"date" : -1}).exec();
     res.send(result);
 }
 let GetAllPlacedOrder = async(req, res)=>{
@@ -190,6 +190,10 @@ let GetAllCancledOrder = async(req, res)=>{
     let result = await Order.find({status : 4}).populate("user_id").populate("product_id").exec();
     res.send(result);
 }
+
+
+
+
 let GetAllByUserId = async(req, res)=>{
     // console.log(req.obj);return;
     let result = await Order.find({user_id : req.obj._id}).populate("product_id").exec()
@@ -216,7 +220,41 @@ let UpdateOrderStatusById = async(req, res)=>{
 }
 
 
-export {Checkout, UpdateOrderStatusById, CountOrder, CountPendingOrder, ConfirmOrder, GetAllOrder, GetAllByUserId, DeleteAllOrder}
+let ChangeOrderStatus = async(req, res)=>{
+   let id = req.params.id;
+   let obj = {};
+   if(req.body.status==2){
+    obj.status = 2;
+    obj.date_shipped = new Date();
+   }
+   if(req.body.status==3){
+        obj.status = 3;
+    obj.date_received = new Date();
+   }
+   if(req.body.status==4){
+        obj.status = 4;
+    obj.date_canceled = new Date();
+   }
+
+   let result = await Order.updateMany({_id : id}, obj);
+   res.send({success:true, result});
+}
+
+export {
+    Checkout, 
+    UpdateOrderStatusById, 
+    CountOrder, 
+    CountPendingOrder, 
+    ConfirmOrder, 
+    GetAllOrder, 
+    GetAllByUserId, 
+    DeleteAllOrder,
+    GetAllPlacedOrder,
+    GetAllCancledOrder,
+    GetAllReceivedOrder,
+    GetAllShippedOrder,
+    ChangeOrderStatus
+}
 
 /*
 

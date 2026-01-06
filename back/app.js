@@ -1,5 +1,5 @@
 import express from 'express'
-import { PORT } from './config/config.js'
+// import { PORT } from './config/config.js'
 import AllRoutes from './routes/AllRoutes.js'
 import cors from 'cors'
 import Upload from 'express-fileupload'
@@ -22,6 +22,9 @@ app.use(Upload());
 
 app.use(AllRoutes);
 
+
+let PORT = process.env.PORT;
+
 app.listen(PORT, ()=>{
-    console.log("Server Running With Port ", PORT);
+    console.log(process.env.SERVER_MSG, PORT);
 })

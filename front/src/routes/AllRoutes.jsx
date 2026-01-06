@@ -23,6 +23,7 @@ import Activation from '../pages/Activation'
 import OrderSummery from '../pages/user/OrderSummery'
 import MyOrder from '../pages/user/MyOrder'
 import NotFound from '../pages/NotFound'
+import ViewAllProduct from '../pages/ViewAllProduct'
 const AllRoutes = () => {
   // :5173/shop/bags
   // :5173/shop/bags/hand-bags
@@ -39,6 +40,7 @@ const AllRoutes = () => {
           <Route path='forgot-password-otp' element={<ForgotPasswordOTP />} />
           <Route path='confirm-password' element={<ConfirmPassword />} />
         </Route>
+        <Route path='/viewall' element={<ViewAllProduct />} />
         <Route path='shop' element={<Shop />} />
         <Route path='shop/:cate' element={<Shop />} />
         <Route path='shop/:cate/:subcate' element={<Shop />} />

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
-import { DB_URL } from '../config/config.js'
+// import { DB_URL } from '../config/config.js'
+let DB_URL = process.env.DB_URL;
 
 mongoose
 .connect(DB_URL)

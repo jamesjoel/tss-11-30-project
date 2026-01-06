@@ -6,8 +6,13 @@ import LoginSchema from '../schemas/LoginSchema'
 import {API_URL} from '../config/API'
 import axios from 'axios'
 import { useState } from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {isLoggedIn} from '../redux/AuthSlice'
+import {getAllByUserIdServer, addCartItemWithoutLoginServer} from '../redux/CartSlice'
 
 const Login = () => {
+    let cartArr = useSelector(state=>state.CartSlice);
+    let dispatch = useDispatch();
     let navigate = useNavigate();
     useEffect(()=>{
         if(localStorage.getItem("user_access")){
@@ -37,6 +42,14 @@ const Login = () => {
                     let name = response.data.name;
                     localStorage.setItem("user_access", token);
                     localStorage.setItem("user_name", name);
+                    dispatch(isLoggedIn());
+                    
+                    if(cartArr.length > 0){
+                        dispatch(addCartItemWithoutLoginServer({cartArr, token}));
+                    }else{
+
+                        dispatch(getAllByUserIdServer())
+                    }
                     if(localStorage.getItem("checkloggedin")){
                         let url = localStorage.getItem("checkloggedin");
                         // console.log(url)

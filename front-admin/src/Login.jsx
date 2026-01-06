@@ -29,8 +29,10 @@ const Login = () => {
           // console.log(response.data)
           let token = response.data.token;
           let name = response.data.name;
+          let prev_type = response.data.type;
           localStorage.setItem("admin_access", token);
           localStorage.setItem("admin_name", name);
+          localStorage.setItem("prev_type", prev_type);
           navigate("/dashboard");
         }
         else{

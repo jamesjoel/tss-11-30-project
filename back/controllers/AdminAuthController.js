@@ -14,7 +14,7 @@ let AdminAuth = async(req, res)=>{
         if(result[0].password == sha1(password)){
             let obj = { _id : result[0]._id, name : result[0].name };
             let token = jwt.sign(obj, ENC_KEY);
-            res.send({success:true, token, name : result[0].name});
+            res.send({success:true, token, type : result[0].type, name : result[0].name});
         }else{
 
             res.send({success:false, errType : 2});
@@ -25,4 +25,15 @@ let AdminAuth = async(req, res)=>{
     }
 }
 
-export {AdminAuth}
+let AdminAdd = async(req, res)=>{
+    req.body.password = sha1(req.body.password);
+    await Admin.create(req.body);
+    res.send({success:true});
+}
+
+
+let GetAllAdmin = async(req, res)=>{
+    let result = await Admin.find();
+    res.send(result);
+}
+export {AdminAuth, AdminAdd, GetAllAdmin}

@@ -27,6 +27,7 @@ let SaveUser = async(req, res)=>{
     req.body.emailVerifiyString = str;
     req.body.activeStatus = 1;
     
+    
    /* SendMail(req.body.email, "james.steppingstone@gmail.com", "Activate Your Account", `
         <p>Welcome <b>${req.body.name}</b>,</p>
         
