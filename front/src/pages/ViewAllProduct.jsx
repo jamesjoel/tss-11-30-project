@@ -20,6 +20,8 @@ const ViewAllProduct = () => {
 
     let [clearFilterArr, setClearFilterArr] = useState([]);
 
+    
+
     useEffect(()=>{
         window.scrollTo(0, 0);
     },[])
@@ -52,13 +54,27 @@ const ViewAllProduct = () => {
   },[])
 
   let GetAllProductByFilterOnPageRefresh = async()=>{
-    console.log("***********")
+    
     const allParamsObject = Object.fromEntries(searchParams.entries())
-    console.log("***********", allParamsObject)
+    if(allParamsObject.min || allParamsObject.max){
+        setMinPrice(allParamsObject.min)
+        setMaxPrice(allParamsObject.max)
+    }
     const queryString = new URLSearchParams(allParamsObject).toString();
-    // console.log(queryString)
+    
     let response = await axios.get(`${import.meta.env.VITE_API_URL}/search?${queryString}`);
     setAllPro(response.data.result)
+    let arr = [];
+    for(let [k, v] of Object.entries(allParamsObject)){
+        if(k=="discount"){
+            arr.push({ [k] : v+"% discount more"});
+        }else{
+            arr.push({[k] : v});
+
+        }
+    }
+    
+    setClearFilterArr(arr);
   }
   
 
@@ -77,21 +93,15 @@ const ViewAllProduct = () => {
     setAllPro(response.data.result)
 }
 
-
-
-
-
-
-
   let searchByColor = (color)=>{
-    // console.log(color)
+    
     const allParamsObject = Object.fromEntries(searchParams.entries())
     setSearchParams({...allParamsObject, color : color});
     GetAllProductByFilter({color : color})
     clearFilterHandler({color : color});
 }
 let searchBySize = (size)=>{
-    // console.log(color)
+    
     const allParamsObject = Object.fromEntries(searchParams.entries())
     setSearchParams({...allParamsObject, size : size});
     GetAllProductByFilter({size : size})
@@ -109,11 +119,7 @@ let handlePrice = async(e)=>{
     
     setMinPrice(e[0])
     setMaxPrice(e[1])
-    // let obj = { min : e[0], max : e[1] };
-    //const allParamsObject = Object.fromEntries(searchParams.entries())
-    //setSearchParams({...allParamsObject, ...obj});
-    //GetAllProductByFilter(obj)
-    
+   
 }
 
 let searchByPrice = ()=>{
@@ -121,6 +127,7 @@ let searchByPrice = ()=>{
     const allParamsObject = Object.fromEntries(searchParams.entries())
     setSearchParams({...allParamsObject, ...obj});
     GetAllProductByFilter(obj)
+    clearFilterHandler(obj);
 }
 
 let searchByCategory = (cate)=>{
@@ -131,11 +138,13 @@ let searchByCategory = (cate)=>{
         delete allParamsObject.subcategory;
         setSearchParams({...allParamsObject, category : cate});
         GetAllProductByFilter({category : cate}, true)
+        clearFilterHandler({category : cate})
         
     }else{
         
         setSearchParams({...allParamsObject, category : cate});
         GetAllProductByFilter({category : cate})
+        clearFilterHandler({category : cate})
     }  
 
     
@@ -145,14 +154,15 @@ let searchBySubCategory = (cate, subcate)=>{
     const allParamsObject = Object.fromEntries(searchParams.entries())
     setSearchParams({...allParamsObject, category : cate, subcategory : subcate});
     GetAllProductByFilter({category : cate, subcategory : subcate})
+    clearFilterHandler({category : cate, subcategory : subcate})
 }
 
 
 let clearFilterHandler = (obj)=>{
+    
     const allParamsObject = Object.fromEntries(searchParams.entries())
-    let clearFilterObj = {...obj, ...allParamsObject};
-    // {size : large, color : red, dis : 10}
-    // [{size:lagre}, {color:red}, {dis:10}]
+    
+    let clearFilterObj = {...allParamsObject, ...obj};
     let arr = [];
     for(let [k, v] of Object.entries(clearFilterObj)){
         if(k=="discount"){
@@ -162,24 +172,41 @@ let clearFilterHandler = (obj)=>{
 
         }
     }
-    // console.log(arr);
+    
     setClearFilterArr(arr);
 }
 
 let removeClearFilter = async(value)=>{
+    // console.log(value);
+    if(value.min){
+        setMinPrice(100);
+    }
+    if(value.max){
+        setMaxPrice(10000);
+    }
     let x = clearFilterArr;
     let y = x.filter(item=>item!=value);
-
+    // console.log(x);
     setClearFilterArr(y);
     let urlobj = Object.assign({}, ...y);
     setSearchParams(urlobj);
     const queryString = new URLSearchParams(urlobj).toString();
-    // console.log(queryString)
+    
     let response = await axios.get(`${import.meta.env.VITE_API_URL}/search?${queryString}`);
     setAllPro(response.data.result)
     
     
     
+}
+
+let removeAllFilter = ()=>{
+
+    setClearFilterArr([]);
+    setSearchParams({});
+    GetAllProduct();
+    setMinPrice(100)
+    setMaxPrice(10000)
+
 }
 
 
@@ -220,7 +247,7 @@ let removeClearFilter = async(value)=>{
                         <p>&#8377;{maxPrice}</p>
 
                         </div>
-                        <RangeSlider min={100} step={100} max={10000} onInput={(e)=>handlePrice(e)} onThumbDragEnd={searchByPrice} />
+                        <RangeSlider value={[minPrice, maxPrice]} min={100} step={100} max={10000} onInput={(e)=>handlePrice(e)} onThumbDragEnd={searchByPrice} />
                         
                     </div>
                     <hr />
@@ -256,7 +283,11 @@ let removeClearFilter = async(value)=>{
                 </div>
             </div>
             <div className="col-md-9">
-                <p>All Product</p>
+                <div className='d-flex justify-content-between'>
+
+                    <p className='m-0'>All Product </p>
+                    <span onClick={removeAllFilter} className='clear-filter' style={{backgroundColor : "#01BEB8", color : "#fff", padding : 0, border : "none"}}>{clearFilterArr.length > 0 ? 'Clear All Filter' : ''}</span>
+                </div>
                 <div>
                     {
                        clearFilterArr.map((item)=><span onClick={()=>removeClearFilter(item)} className='clear-filter'>{ item[Object.keys(item)] } 
