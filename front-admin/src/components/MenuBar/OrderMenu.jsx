@@ -1,6 +1,6 @@
 import React from 'react'
 
-const OrderMenu = ({NavLink}) => {
+const OrderMenu = ({NavLink, setSidebarOpen}) => {
   return (
     <li className="mb-1">
         <button className="btn align-items-center rounded collapsed " style={{width : "100%"}} data-bs-toggle="collapse" data-bs-target="#home-collapse10" aria-expanded="false">
@@ -15,11 +15,11 @@ const OrderMenu = ({NavLink}) => {
         </button>
         <div className="collapse" id="home-collapse10" >
           <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><NavLink to="/orders" className="link-dark rounded">All</NavLink></li>
-            <li><NavLink to="/orders/placed" className="link-dark rounded">Placed</NavLink></li>
-            <li><NavLink to="/orders/shipped" className="link-dark rounded">Shipped</NavLink></li>
-            <li><NavLink to="/orders/received" className="link-dark rounded">Received</NavLink></li>
-            <li><NavLink to="/orders/canceled" className="link-dark rounded">Canceled</NavLink></li>
+            <li><NavLink onClick={()=>setSidebarOpen(false)} to="/orders" className="link-dark rounded">All</NavLink></li>
+            <li><NavLink onClick={()=>setSidebarOpen(false)} to="/orders/placed" className="link-dark rounded">Placed</NavLink></li>
+            <li><NavLink onClick={()=>setSidebarOpen(false)} to="/orders/shipped" className="link-dark rounded">Shipped</NavLink></li>
+            <li><NavLink onClick={()=>setSidebarOpen(false)} to="/orders/received" className="link-dark rounded">Received</NavLink></li>
+            <li><NavLink onClick={()=>setSidebarOpen(false)} to="/orders/canceled" className="link-dark rounded">Canceled</NavLink></li>
             
           </ul>
         </div>

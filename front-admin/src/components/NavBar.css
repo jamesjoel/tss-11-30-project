@@ -1,3 +1,37 @@
+.left-sidebar {
+  width: 260px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #fff;
+  z-index: 1050;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+.show-sidebar{
+  left : 0px !important;
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .left-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .left-sidebar.show {
+    transform: translateX(0);
+  }
+}
+
+/* Overlay */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1049;
+}
+
 .b-example-divider {
   flex-shrink: 0;
   width: 1.5rem;

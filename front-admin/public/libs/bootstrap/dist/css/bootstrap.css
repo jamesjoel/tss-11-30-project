@@ -6750,7 +6750,7 @@ textarea.form-control-lg {
   visibility: visible;
 }
 
-.offcanvas-backdrop {
+/* .offcanvas-backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -6764,7 +6764,7 @@ textarea.form-control-lg {
 }
 .offcanvas-backdrop.show {
   opacity: 0.5;
-}
+} */
 
 .offcanvas-header {
   display: flex;

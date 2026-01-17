@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SubCategoryMenu = ({NavLink, showAddMenu}) => {
+const SubCategoryMenu = ({NavLink, showAddMenu,setSidebarOpen}) => {
   return (
     <li className="mb-1">
         <button className="btn align-items-center rounded collapsed " style={{width : "100%"}} data-bs-toggle="collapse" data-bs-target="#home-collapse2" aria-expanded="false">
@@ -18,11 +18,11 @@ const SubCategoryMenu = ({NavLink, showAddMenu}) => {
             {
               showAddMenu
               ?
-              <li><NavLink to="/subcategory/add" className="link-dark rounded">Add New</NavLink></li>
+              <li><NavLink onClick={()=>setSidebarOpen(false)} to="/subcategory/add" className="link-dark rounded">Add New</NavLink></li>
               :
               ''
             }
-            <li><NavLink to="/subcategory" className="link-dark rounded">List</NavLink></li>
+            <li><NavLink onClick={()=>setSidebarOpen(false)} to="/subcategory" className="link-dark rounded">List</NavLink></li>
             
           </ul>
         </div>

@@ -4659,13 +4659,13 @@
 
       // 'static' option will be translated to true, and booleans will keep their value
       const isVisible = Boolean(this._config.backdrop);
-      return new Backdrop({
-        className: CLASS_NAME_BACKDROP,
-        isVisible,
-        isAnimated: true,
-        rootElement: this._element.parentNode,
-        clickCallback: isVisible ? clickCallback : null
-      });
+      // return new Backdrop({
+      //   className: CLASS_NAME_BACKDROP,
+      //   isVisible,
+      //   isAnimated: true,
+      //   rootElement: this._element.parentNode,
+      //   clickCallback: isVisible ? clickCallback : null
+      // });
     }
     _initializeFocusTrap() {
       return new FocusTrap({

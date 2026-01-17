@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SettingMenu = ({NavLink}) => {
+const SettingMenu = ({NavLink, setSidebarOpen}) => {
   return (
     <li className="mb-1">
         <button className="btn align-items-center rounded collapsed " style={{width : "100%"}} data-bs-toggle="collapse" data-bs-target="#setting-collapse" aria-expanded="false">
@@ -15,10 +15,10 @@ const SettingMenu = ({NavLink}) => {
         </button>
         <div className="collapse" id="setting-collapse" >
           <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><NavLink to="/setting/preveledge" className="link-dark rounded">Preveledge List</NavLink></li>
-            <li><NavLink to="/setting/add" className="link-dark rounded">Add Admins</NavLink></li>
-            <li><NavLink to="/setting/list" className="link-dark rounded">List</NavLink></li>
-            <li><NavLink to="/setting/pagination" className="link-dark rounded">Pagination</NavLink></li>
+            <li><NavLink onClick={()=>setSidebarOpen(false)} to="/setting/preveledge" className="link-dark rounded">Preveledge List</NavLink></li>
+            <li><NavLink onClick={()=>setSidebarOpen(false)} to="/setting/add" className="link-dark rounded">Add Admins</NavLink></li>
+            <li><NavLink onClick={()=>setSidebarOpen(false)} to="/setting/list" className="link-dark rounded">List</NavLink></li>
+            <li><NavLink onClick={()=>setSidebarOpen(false)} to="/setting/pagination" className="link-dark rounded">Pagination</NavLink></li>
             
             
           </ul>
