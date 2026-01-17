@@ -20,15 +20,15 @@ const Hero = () => {
     let arr = [];
     for(let i=0; i<=2; i++)
     {
-      arr.push(<div className="col-md-4">
+      arr.push(<div className="col-md-4 col-sm-12 col-12 ">
               <div className="banner-item image-zoom-effect">
                 <div className="image-holder">
                   <a href="#">
-                    <img src={allLatest[i].latestProduct ? `${import.meta.env.VITE_API_PATH}/product_images/${allLatest[i].latestProduct.image}` : ''} style={{height : "250px"}} alt="product" className="img-fluid"/>
+                    <img src={allLatest[i].latestProduct ? `${import.meta.env.VITE_API_PATH}/product_images/${allLatest[i].latestProduct.image}` : ''} style={{height : "250px", width : "100%", padding : 20}} alt="product" className=""/>
                   </a>
                 </div>
-                <div className="banner-content py-4">
-                  <h5 className="element-title text-uppercase">
+                <div className="text-center py-3" style={{width : "100%"}}>
+                  <h5 className="element-title text-uppercase text-center">
                     <a href="index.html" className="item-anchor">{allLatest[i].latestProduct ? allLatest[i].latestProduct.title : ''}</a>
                   </h5>
                   <p className='mb-0'>{allLatest[i].category ? allLatest[i].category[0].title : ''} &gt; <small>{allLatest[i].subcategory ? allLatest[i].subcategory[0].title : ''}</small></p>

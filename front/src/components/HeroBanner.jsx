@@ -7,18 +7,18 @@ const HeroBanner = () => {
   let allSlide = [
     {
       _id : 1,
-      caption : "First",
-      image : "1.jpg"
+      caption : "Fashion Bags",
+      image : "hero-banner.jpg"
     },
     {
       _id : 2,
-      caption : "First",
-      image : "1.jpg"
+      caption : "Stylish Bags",
+      image : "hero-banner2.jpg"
     },
     {
       _id : 3,
-      caption : "First",
-      image : "1.jpg"
+      caption : "Bags for Everyone",
+      image : "hero-banner3.jpg"
     }
     
   ]
@@ -28,7 +28,7 @@ const HeroBanner = () => {
 
     {
       allSlide.map(item=><Carousel.Item>
-        <img src={item.image} style={{width : "100%", height : "450px"}} />
+        <img src={`/images/${item.image}`} style={{width : "100%", height : "550px"}} />
         <Carousel.Caption>
           <h1>{item.caption}</h1>
           

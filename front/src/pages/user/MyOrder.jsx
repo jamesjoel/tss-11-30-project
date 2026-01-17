@@ -20,6 +20,7 @@ const MyOrder = () => {
   return (
     <div className='alert alert-secondary'>
         <h5>Your Orders</h5>
+        <div className='table-responsive'>
         <table className="my-5 table table-dark table-hover table-bordered">
           <thead>
             <tr>
@@ -50,6 +51,7 @@ const MyOrder = () => {
             }
           </tbody>
         </table>
+        </div>
     </div>
   )
 }

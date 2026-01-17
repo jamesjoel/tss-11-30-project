@@ -1,0 +1,48 @@
+@media (max-width : 576px) {
+    .logo{
+        margin-left: -15px;
+    }
+    .you{
+        position: relative !important;
+        
+        /* background-color: red; */
+        font-size: 18px;
+        left : 85px;
+        
+        
+    }
+    .d-hide-sm{
+        display: none;
+    }
+}
+@media (min-width : 576px) {
+    .logo{
+        margin-left: -15px;
+        
+        
+    }
+    .you{
+        position: relative !important;
+        left : 85px;
+        
+        background-color: blue;
+        font-size: 18px;
+        
+    }
+    .d-hide-sm{
+        display: none;
+    }
+}
+@media (min-width : 768px) {
+    .logo{
+        margin-left: 30px;
+        
+    }
+    .you{
+        display: none;
+    }
+    .d-hide-md{
+        display: none;
+    }
+    
+}

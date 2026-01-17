@@ -4,7 +4,7 @@ import axios from 'axios'
 import { API_URL } from '../config/API'
 import { NavLink } from 'react-router-dom'
 
-const CategoryDropDown2 = () => {
+const CategoryDropDown2 = ({hideOffset}) => {
 
     let [data, setData] = useState([]);
     useEffect(() => {
@@ -36,9 +36,9 @@ const CategoryDropDown2 = () => {
                     data.map(item => {
                         return (
                             <li>
-                                <NavLink className="dropdown-item" to={`/shop/${SEOFrndlyURL(item.category.title)}`}>
+                                <button className="dropdown-item">
                                     {item.category.title} {item.subcate.length > 0 ? <span>&raquo;</span> : ''} 
-                                </NavLink>
+                                </button>
                                 {
                                     item.subcate.length > 0
                                     ?
@@ -47,7 +47,7 @@ const CategoryDropDown2 = () => {
                                         item.subcate.map(item2=>{
                                             return(
                                                 <li>
-                                                    <NavLink className="dropdown-item" to={`/shop/${SEOFrndlyURL(item.category.title)}/${SEOFrndlyURL(item2.title)}`}>{item2.title}</NavLink>
+                                                    <NavLink onClick={hideOffset} className="dropdown-item" to={`/shop/${SEOFrndlyURL(item.category.title)}/${SEOFrndlyURL(item2.title)}`}>{item2.title}</NavLink>
                                                 </li>
                                             )
                                         })

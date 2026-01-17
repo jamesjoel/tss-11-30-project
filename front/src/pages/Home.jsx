@@ -29,8 +29,8 @@ const Home = () => {
   return (
     <>
     <Hero />
-    <HeroBottom />
-    <Categories />
+    {/* <HeroBottom /> */}
+    {/* <Categories /> */}
      <section id="new-arrival" className="new-arrival py-5 position-relative overflow-hidden">
     <div className="container">
       <div className="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
@@ -51,8 +51,8 @@ const Home = () => {
      
     </div>
   </section>
-  <BestSelling />
-  <Collections />
+  {/* <BestSelling /> */}
+  {/* <Collections /> */}
   </>
   )
 }

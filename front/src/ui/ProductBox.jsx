@@ -15,7 +15,7 @@ const ProductBox = ({item}) => {
 
 
   return (
-    <div className="col-md-3">
+    <div className="col-md-3 col-sm-6 col-6">
         <div style={{position : "relative", left : 140, top : 30,  zIndex : 999, backgroundColor : "#01beb8", width : 35, textAlign : "center", color:"#fff", fontSize : 15, borderRadius : 50, padding : 3}}>{item.discount}%</div>
             <div className="product-item image-zoom-effect link-effect">
               <div className="image-holder position-relative">
