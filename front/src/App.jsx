@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import { useDispatch } from 'react-redux'
 import {isLoggedIn} from './redux/AuthSlice'
 import {getAllByUserIdServer} from './redux/CartSlice'
+import NewHeader from './components/NewHeader'
 
 const App = () => {
   let dispatch = useDispatch();
@@ -15,7 +16,7 @@ const App = () => {
 
   return (
     <>
-    <Header />
+    <NewHeader />
     
       
         <AllRoutes /> 

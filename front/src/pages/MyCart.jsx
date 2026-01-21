@@ -50,7 +50,8 @@ const MyCart = () => {
             <div className='row'>
                 <div className='col-md-12'>
                     <h3>Items in Your Cart</h3>
-                    <table className='table'>
+                    <div className='table-responsive'>
+                      <table className='table'>
                         <thead>
                             <tr>
                                 <th>Product</th>
@@ -89,6 +90,7 @@ const MyCart = () => {
                             
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
             <div className="row">

@@ -18,9 +18,39 @@
   .left-sidebar {
     transform: translateX(-100%);
   }
+  .admin-logo{
+    margin-left: 50px;
+    margin-top: 3px;
+    padding-top: 5px;
+  }
 
   .left-sidebar.show {
     transform: translateX(0);
+  }
+  .admin-dd{
+    margin-top: -10px;
+  }
+}
+
+
+/* Tablet */
+@media (min-width : 576px) {
+  .admin-logo{
+    margin-left: 50px;
+    margin-top: 3px;
+    padding-top: 5px;
+  }
+}
+
+/* MD screen */
+@media (min-width : 768px) {
+  .admin-logo{
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+  .admin-dd{
+    margin-top: 0px;
+    margin-left : -20px;
   }
 }
 

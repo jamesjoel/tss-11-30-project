@@ -29,7 +29,7 @@ const ProtactedRoute = () => {
     
     <div className="body-wrapper">
     
-      <Header />
+      {/* <Header /> */}
       
       <div className="body-wrapper-inner">
         <div className="container-fluid">

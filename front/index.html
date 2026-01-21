@@ -17,6 +17,17 @@
     href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Marcellus&display=swap"
     rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <script>
+document.querySelectorAll('.submenu-toggle').forEach(btn => {
+
+  btn.addEventListener('click', e => {
+    alert()
+    e.preventDefault();
+    e.stopPropagation();
+    btn.nextElementSibling.classList.toggle('show');
+  });
+});
+</script>
   </head>
   <body>
     <div id="root"></div>
@@ -30,5 +41,6 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="/js/script.min.js"></script>
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+ 
   </body>
 </html>

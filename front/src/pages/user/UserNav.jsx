@@ -64,12 +64,7 @@ const UserNav = () => {
               <li className='nav-item'>
                 <NavLink className='nav-link' to='/user/myaccount'><i class="fa fa-user" aria-hidden="true"></i> My Account &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></NavLink>
               </li>
-              <li className='nav-item'>
-                <a className='nav-link' href=''><i class="fa fa-address-book" aria-hidden="true"></i> Manage Address &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' href=''><i class="fa fa-heart" aria-hidden="true"></i> Wishlist &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-              </li>
+              
               <li className='nav-item'>
                 <NavLink className='nav-link' to='/user/logout'><i class="fa fa-power-off" aria-hidden="true"></i> Logout</NavLink>
               </li>

@@ -6,7 +6,7 @@ const BlogPost = () => {
     <div className="container">
       <div className="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
         <h4 className="text-uppercase">Read Blog Posts</h4>
-        <a href="index.html" className="btn-link">View All</a>
+        
       </div>
       <div className="row">
         <div className="col-md-4">

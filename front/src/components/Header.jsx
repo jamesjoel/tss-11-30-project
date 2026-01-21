@@ -36,7 +36,7 @@ const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-light text-uppercase fs-6 p-3 border-bottom align-items-center">
     <div className="container-fluid">
-      <div className="row justify-content-between align-items-center w-100">
+      <div className="row justify-content-between align-items-center" style={{width : "105%"}}>
 
         <div className="col-auto">
           <button style={{position : "relative", left : -20}} className="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -97,7 +97,7 @@ const Header = () => {
         </div>
 
         <div className="col-5 col-lg-auto">
-          <ul className="list-unstyled d-flex m-0">
+          <ul className="list-unstyled d-flex" style={{marginLeft : "-30px", marginTop : 5}}>
             
             
             {

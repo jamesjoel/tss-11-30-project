@@ -1,0 +1,99 @@
+/* ================= BASE ================= */
+.navbar-toggler{
+  /* position: fixed; */
+  
+}
+.dropdown-submenu {
+  display: none;
+}
+
+/* Show submenu when JS adds .show */
+.dropdown-submenu.show {
+  display: block;
+}
+
+.down-arrow{
+    position: relative;
+    top: -2px;
+    left: 8px;
+
+}
+
+/* ================= DESKTOP (HOVER) ================= */
+@media (min-width: 768px) {
+  .dropdown-menu > li:hover > .dropdown-submenu {
+    display: block;
+    position: absolute;
+    left: 100%;
+    top: 0;
+  }
+  .nav-desktop{
+    display: block;
+  }
+  .nav-mobile{
+    display: none;
+  }
+
+  .you-button{
+    display: none;  
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 767px) {
+  .navbar-brand{
+    position: relative;
+    left : -75px;
+  }
+  .you-button{
+    border : 1px solid #000;
+    padding: 3px 10px;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 5px;
+    position: relative;
+    display: inline-block;
+    left : 8px;
+  }
+  .dropdown-submenu {
+    padding-left: 15px;
+    position: static;
+  }
+  .nav-desktop{
+    display: none;
+  }
+  .nav-mobile{
+    display: block;
+  }
+  
+}
+
+.nav-mobile-item{
+    list-style: none;
+    border : 1px solid #d2d1d1;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding-left: 10px;
+    color : #000;
+    
+}
+.nav-mobile-item-inner{
+  list-style: none;
+}
+.nav-mobile-item .nav-mobile-link{
+    display: block;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+    background-color: transparent;
+    border: none;
+    padding: 6px;
+}
+.nav-mobile-ul{
+    opacity: 1;
+    transition: all 1s ease-in;
+    margin: 0;
+    padding: 0 0 0 0px;
+}
+.nav-mobile-ul-subcate{
+    display: none;
+}

@@ -8,6 +8,7 @@
         /* background-color: red; */
         font-size: 18px;
         left : 85px;
+        top: 7px;
         
         
     }
@@ -24,7 +25,7 @@
     .you{
         position: relative !important;
         left : 85px;
-        
+        top: 7px;
         background-color: blue;
         font-size: 18px;
         
@@ -45,4 +46,35 @@
         display: none;
     }
     
+}
+
+
+/* ========== BASE ========== */
+.dropdown-submenu {
+    display: none;
+    position: relative;
+}
+
+/* ========== DESKTOP (HOVER) ========== */
+@media (min-width: 768px) {
+    .dropdown-menu > li:hover > .dropdown-submenu {
+        display: block;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        margin-left: 2px;
+    }
+}
+
+/* ========== MOBILE (CLICK → FOCUS) ========== */
+@media (max-width: 767px) {
+    .submenu-toggle {
+        cursor: pointer;
+    }
+
+    .dropdown-menu > li:focus-within > .dropdown-submenu {
+        display: block;
+        position: static;
+        padding-left: 15px;
+    }
 }

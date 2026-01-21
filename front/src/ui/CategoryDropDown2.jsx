@@ -36,7 +36,7 @@ const CategoryDropDown2 = ({hideOffset}) => {
                     data.map(item => {
                         return (
                             <li>
-                                <button className="dropdown-item">
+                                <button className="dropdown-item submenu-toggle" tabIndex={0}>
                                     {item.category.title} {item.subcate.length > 0 ? <span>&raquo;</span> : ''} 
                                 </button>
                                 {

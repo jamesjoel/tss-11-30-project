@@ -20,20 +20,31 @@ const NavBar = () => {
         />
       )}
     <button
-  className="btn btn-outline-secondary d-md-none" style={{position : "absolute", zIndex : 999, borderColor : "#fff", top : 10, left : 10, color : "#fff"}}
+  className="btn btn-outline-secondary d-md-none" style={{position : "fixed", zIndex : 999, borderColor : "#fff", top : 14, left : 10, color : "#fff"}}
   onClick={() => setSidebarOpen(true)}
 >
   ☰
 </button>
-      <div className="app-topstrip bg-dark py-6 px-3 w-100 d-lg-flex align-items-center justify-content-between">
-        <div className="d-flex align-items-center justify-content-center gap-5 mb-2 mb-lg-0">
+      <div className="app-topstrip bg-dark py-6 px-3 w-100 d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center justify-content-between gap-5 mb-2 mb-lg-0">
           <a className="d-flex justify-content-center" href="#">
             {/* <img src="/images/logos/logo-wrappixel.svg" alt="" width="150"/> */}
-            <h2 className='text-light'>Administrator</h2>
+            <h2 className='text-light admin-logo'>Administrator</h2>
           </a>
+          
 
 
         </div>
+        <ul className='nav admin-dd'>
+            <li className='nav-item dropdown'>
+              <a href='#' className='text-light dropdown-toggle' style={{fontSize : 20}} data-bs-toggle="dropdown" to="/dashboard">Tanya</a>
+              <div className='dropdown-menu'>
+                <NavLink className='dropdown-item'>
+                  <i className='fa fa-lock'></i> Logout
+                  </NavLink>
+              </div>
+            </li>
+          </ul>
       </div>
       
       <aside className={`left-sidebar ${sidebarOpen ? "show show-sidebar" : ""}`}>
